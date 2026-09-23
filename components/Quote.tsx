@@ -6,6 +6,7 @@ import { EASE_OUT } from '@/lib/animations';
 
 export function Quote() {
   const words = "Code is poetry written in logic.".split(" ");
+  const gradientIndexes = new Set([2, 3]);
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-24 md:py-32">
@@ -41,7 +42,7 @@ export function Quote() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease: EASE_OUT }}
-                className={`inline-block ${i === 3 ? 'text-gradient' : ''}`}
+                className={`inline-block ${gradientIndexes.has(i) ? 'text-gradient' : ''}`}
               >
                 {w}
               </motion.span>

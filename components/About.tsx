@@ -192,7 +192,7 @@ export function About() {
                   key={h.title}
                   variants={fadeInUp}
                   whileHover={{ y: -4, transition: { duration: 0.2, ease: EASE_OUT } }}
-                  className="group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent/30"
+                  className="group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_28px_-8px] hover:shadow-accent/30"
                 >
                   <div className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-accent/5 transition-all duration-300 group-hover:scale-150 group-hover:bg-accent/10" />
                   <div className="relative">
@@ -202,7 +202,7 @@ export function About() {
                     >
                       <Icon size={20} className="text-accent" />
                     </motion.div>
-                    <p className="mt-2 text-sm font-semibold">{h.title}</p>
+                    <p className="mt-2 text-sm font-semibold transition-colors group-hover:text-accent">{h.title}</p>
                     <p className="text-xs text-muted-foreground">{h.desc}</p>
                   </div>
                 </motion.div>

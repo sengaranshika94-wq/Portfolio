@@ -91,8 +91,7 @@ export function Contact() {
         variants={staggerContainer(0.08)}
         initial="hidden"
         whileInView="show"
-        viewport={viewportOnce}
-        className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 text-center md:p-16"
+        viewport={viewportOnce}          className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 text-center transition-shadow duration-300 hover:shadow-[0_0_60px_-15px] hover:shadow-accent/25 md:p-16"
       >
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}

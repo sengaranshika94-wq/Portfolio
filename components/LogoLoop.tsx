@@ -99,7 +99,7 @@ export function LogoLoop({
     <div
       key={copy}
       ref={copy === 0 ? sequenceRef : undefined}
-      className="flex shrink-0 items-start"
+      className="flex shrink-0 items-center"
       style={{ gap, paddingRight: gap }}
       aria-hidden={copy !== 0}
     >

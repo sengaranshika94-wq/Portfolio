@@ -1,0 +1,14 @@
+$ next dev
+  ▲ Next.js 13.5.1
+  - Local:        http://localhost:3000
+
+ ✓ Ready in 4.3s
+ ○ compiling /page ...
+ ✓ Compiled /page in 16.8s (1402 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled in 2.9s (701 modules)
+ ○ compiling /not-found ...
+ ✓ Compiled /not-found in 7.9s (1380 modules)
+
+ ⚠ metadata.metadataBase is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase

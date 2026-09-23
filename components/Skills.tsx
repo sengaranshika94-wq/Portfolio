@@ -55,12 +55,11 @@ export function Skills() {
       >
         <motion.span variants={fadeInUp} className="block text-sm font-semibold text-accent">
           02 — Skills
-        </motion.span>
-        <motion.h2
-          variants={fadeInUp}
-          className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
-        >
-          Technologies I work with
+        </motion.span>        <motion.h2 variants={fadeInUp} className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          Technologies I{' '}
+          <span className="bg-gradient-to-r from-accent via-sky-300 to-sky-400 bg-clip-text text-transparent">
+            work with
+          </span>
         </motion.h2>
         <motion.p variants={fadeInUp} className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
           Tools I use to build full-stack and AI-powered applications.

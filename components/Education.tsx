@@ -29,7 +29,7 @@ export function Education() {
         <motion.div
           variants={fadeInUp}
           whileHover={{ y: -3, transition: { duration: 0.2, ease: EASE_OUT } }}
-          className="mt-10 relative overflow-hidden rounded-xl border border-border bg-card p-6 md:p-8"
+          className="group mt-10 relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_32px_-8px] hover:shadow-accent/30 md:p-8"
         >
           {/* Animated accent bar */}
           <motion.div
@@ -44,7 +44,7 @@ export function Education() {
             <motion.div
               whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
               transition={{ duration: 0.4 }}
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-accent-foreground"
             >
               <GraduationCap size={24} />
             </motion.div>

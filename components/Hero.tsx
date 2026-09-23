@@ -31,8 +31,6 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
-      <div className="absolute inset-0 grid-bg opacity-[0.4] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
-
       {/* Animated accent orb */}
       <motion.div
         style={{ y: heroY.get() * -100 }}
@@ -81,7 +79,7 @@ export function Hero() {
         <motion.div variants={fadeInUp} className="mb-6 flex justify-center">
           <motion.span
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-sm"
+            className="glass inline-flex items-center gap-2 rounded-full border border-border/50 px-4 py-1.5 text-xs font-medium text-muted-foreground"
           >
             <motion.span
               animate={{ rotate: [0, 15, -15, 0] }}

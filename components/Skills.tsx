@@ -1,23 +1,67 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleIn, viewportOnce, EASE_OUT } from '@/lib/animations';
+import {
+  Braces, Component, Server, Database, Palette, Shield,
+  GitBranch, Zap, Sparkles, type LucideIcon
+} from 'lucide-react';
+import {
+  fadeInUp, staggerContainer, scaleIn, viewportOnce, EASE_OUT
+} from '@/lib/animations';
+import { Card } from '@/components/ui/card';
 
-const SKILLS: { name: string; category: string }[] = [
-  { name: 'JavaScript', category: 'Language' },
-  { name: 'React', category: 'Frontend' },
-  { name: 'Node.js', category: 'Backend' },
-  { name: 'Express.js', category: 'Backend' },
-  { name: 'MongoDB', category: 'Database' },
-  { name: 'HTML', category: 'Frontend' },
-  { name: 'CSS', category: 'Frontend' },
-  { name: 'Tailwind CSS', category: 'Styling' },
-  { name: 'Git', category: 'Tooling' },
-  { name: 'GitHub', category: 'Tooling' },
-  { name: 'Redis', category: 'Cache' },
-  { name: 'REST APIs', category: 'Backend' },
-  { name: 'JWT Authentication', category: 'Security' },
-  { name: 'GenAI / Gemini', category: 'AI' },
+type Skill = { name: string; icon: LucideIcon };
+type SkillCategory = { title: string; icon: LucideIcon; skills: Skill[] };
+
+const CATEGORIES: SkillCategory[] = [
+  {
+    title: 'Languages',
+    icon: Braces,
+    skills: [{ name: 'JavaScript', icon: Braces }],
+  },
+  {
+    title: 'Frontend',
+    icon: Component,
+    skills: [
+      { name: 'React', icon: Component },
+      { name: 'HTML', icon: Component },
+      { name: 'CSS', icon: Palette },
+      { name: 'Tailwind CSS', icon: Palette },
+    ],
+  },
+  {
+    title: 'Backend',
+    icon: Server,
+    skills: [
+      { name: 'Node.js', icon: Server },
+      { name: 'Express.js', icon: Server },
+      { name: 'REST APIs', icon: Zap },
+    ],
+  },
+  {
+    title: 'Database & Cache',
+    icon: Database,
+    skills: [
+      { name: 'MongoDB', icon: Database },
+      { name: 'Redis', icon: Database },
+    ],
+  },
+  {
+    title: 'Tooling',
+    icon: GitBranch,
+    skills: [
+      { name: 'Git', icon: GitBranch },
+      { name: 'GitHub', icon: GitBranch },
+    ],
+  },
+  {
+    title: 'Security & AI',
+    icon: Shield,
+    skills: [
+      { name: 'JWT Authentication', icon: Shield },
+      { name: 'GenAI / Gemini', icon: Sparkles },
+    ],
+  },
 ];
 
 export function Skills() {
@@ -39,25 +83,53 @@ export function Skills() {
           Technologies I work with
         </motion.h2>
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          {SKILLS.map((skill) => (
-            <motion.div
-              key={skill.name}
-              variants={scaleIn}
-              whileHover={{ y: -4, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2, ease: EASE_OUT }}
-              className="group relative cursor-default overflow-hidden rounded-lg border border-border bg-card px-4 py-2"
-            >
-              <div className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-accent/8 transition-transform duration-300 group-hover:scale-y-100" />
-              <span className="relative text-sm font-medium text-foreground transition-colors duration-200 group-hover:text-accent">
-                {skill.name}
-              </span>
-              <span className="absolute -top-7 left-1/2 -translate-x-1/2 rounded-md bg-foreground px-2 py-0.5 text-[10px] font-medium text-background opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-top-8">
-                {skill.category}
-              </span>
-            </motion.div>
-          ))}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((cat) => {
+            const CatIcon = cat.icon;
+            return (
+              <motion.div
+                key={cat.title}
+                variants={scaleIn}
+                whileHover={{ y: -6, transition: { duration: 0.2, ease: EASE_OUT } }}
+              >
+                <Card className="group relative h-full overflow-hidden border-border/60 bg-card/40 p-5 backdrop-blur-sm transition-colors hover:border-accent/30">
+                  {/* Glow on hover */}
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/5 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <div className="relative flex items-center gap-2.5 mb-4">
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent"
+                    >
+                      <CatIcon size={18} />
+                    </motion.div>
+                    <h3 className="text-sm font-semibold text-foreground">
+                      {cat.title}
+                    </h3>
+                  </div>
+
+                  <div className="relative flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => {
+                      const Icon = skill.icon;
+                      return (
+                        <motion.div
+                          key={skill.name}
+                          whileHover={{ y: -3, scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ duration: 0.15, ease: EASE_OUT }}
+                          className="inline-flex items-center gap-1.5 rounded-md border border-border/50 bg-secondary/40 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
+                        >
+                          <Icon size={12} className="text-accent/60" />
+                          {skill.name}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>

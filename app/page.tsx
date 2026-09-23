@@ -6,11 +6,12 @@ import { Projects } from '@/components/Projects';
 import { Achievements } from '@/components/Achievements';
 import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
+import { Quote } from '@/components/Quote';
 import { Footer } from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-background">
+    <main className="relative min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -19,6 +20,7 @@ export default function Home() {
       <Achievements />
       <Education />
       <Contact />
+      <Quote />
       <Footer />
     </main>
   );

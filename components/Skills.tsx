@@ -2,66 +2,46 @@
 
 import { motion } from 'framer-motion';
 import {
-  Braces, Component, Server, Database, Palette, Shield,
-  GitBranch, Zap, Sparkles, type LucideIcon
-} from 'lucide-react';
-import {
-  fadeInUp, staggerContainer, scaleIn, viewportOnce, EASE_OUT
-} from '@/lib/animations';
-import { Card } from '@/components/ui/card';
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiJavascript,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiPrisma,
+  SiRedis,
+  SiGit,
+  SiGithub,
+  SiGooglegemini,
+  SiImagedotsc as SiImagekit,
+  SiVercel,
+} from 'react-icons/si';
+import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
+import { LogoLoop, type LogoLoopItem } from '@/components/LogoLoop';
 
-type Skill = { name: string; icon: LucideIcon };
-type SkillCategory = { title: string; icon: LucideIcon; skills: Skill[] };
+const frontendLogos: LogoLoopItem[] = [
+  { node: <SiReact color="#61DAFB" />, title: 'React' },
+  { node: <SiNextdotjs color="#FFFFFF" />, title: 'Next.js' },
+  { node: <SiTypescript color="#3178C6" />, title: 'TypeScript' },
+  { node: <SiTailwindcss color="#06B6D4" />, title: 'Tailwind CSS' },
+  { node: <SiJavascript color="#F7DF1E" />, title: 'JavaScript' },
+];
 
-const CATEGORIES: SkillCategory[] = [
-  {
-    title: 'Languages',
-    icon: Braces,
-    skills: [{ name: 'JavaScript', icon: Braces }],
-  },
-  {
-    title: 'Frontend',
-    icon: Component,
-    skills: [
-      { name: 'React', icon: Component },
-      { name: 'HTML', icon: Component },
-      { name: 'CSS', icon: Palette },
-      { name: 'Tailwind CSS', icon: Palette },
-    ],
-  },
-  {
-    title: 'Backend',
-    icon: Server,
-    skills: [
-      { name: 'Node.js', icon: Server },
-      { name: 'Express.js', icon: Server },
-      { name: 'REST APIs', icon: Zap },
-    ],
-  },
-  {
-    title: 'Database & Cache',
-    icon: Database,
-    skills: [
-      { name: 'MongoDB', icon: Database },
-      { name: 'Redis', icon: Database },
-    ],
-  },
-  {
-    title: 'Tooling',
-    icon: GitBranch,
-    skills: [
-      { name: 'Git', icon: GitBranch },
-      { name: 'GitHub', icon: GitBranch },
-    ],
-  },
-  {
-    title: 'Security & AI',
-    icon: Shield,
-    skills: [
-      { name: 'JWT Authentication', icon: Shield },
-      { name: 'GenAI / Gemini', icon: Sparkles },
-    ],
-  },
+const backendLogos: LogoLoopItem[] = [
+  { node: <SiNodedotjs color="#5FA04E" />, title: 'Node.js' },
+  { node: <SiExpress color="#FFFFFF" />, title: 'Express' },
+  { node: <SiMongodb color="#47A248" />, title: 'MongoDB' },
+  { node: <SiPostgresql color="#4169E1" />, title: 'PostgreSQL' },
+  { node: <SiPrisma color="#5A67D8" />, title: 'Prisma' },
+  { node: <SiRedis color="#FF4438" />, title: 'Redis' },
+  { node: <SiGit color="#F05032" />, title: 'Git' },
+  { node: <SiGithub color="#FFFFFF" />, title: 'GitHub' },
+  { node: <SiGooglegemini color="#8E75B2" />, title: 'Gemini / GenAI' },
+  { node: <SiImagekit color="#4B78FF" />, title: 'ImageKit' },
+  { node: <SiVercel color="#FFFFFF" />, title: 'Vercel' },
 ];
 
 export function Skills() {
@@ -82,55 +62,31 @@ export function Skills() {
         >
           Technologies I work with
         </motion.h2>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((cat) => {
-            const CatIcon = cat.icon;
-            return (
-              <motion.div
-                key={cat.title}
-                variants={scaleIn}
-                whileHover={{ y: -6, transition: { duration: 0.2, ease: EASE_OUT } }}
-              >
-                <Card className="group relative h-full overflow-hidden border-border/60 bg-card/40 p-5 backdrop-blur-sm transition-colors hover:border-accent/30">
-                  {/* Glow on hover */}
-                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/5 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-
-                  <div className="relative flex items-center gap-2.5 mb-4">
-                    <motion.div
-                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                      transition={{ duration: 0.4 }}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent"
-                    >
-                      <CatIcon size={18} />
-                    </motion.div>
-                    <h3 className="text-sm font-semibold text-foreground">
-                      {cat.title}
-                    </h3>
-                  </div>
-
-                  <div className="relative flex flex-wrap gap-2">
-                    {cat.skills.map((skill) => {
-                      const Icon = skill.icon;
-                      return (
-                        <motion.div
-                          key={skill.name}
-                          whileHover={{ y: -3, scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ duration: 0.15, ease: EASE_OUT }}
-                          className="inline-flex items-center gap-1.5 rounded-md border border-border/50 bg-secondary/40 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                        >
-                          <Icon size={12} className="text-accent/60" />
-                          {skill.name}
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </div>
+        <motion.p variants={fadeInUp} className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          Tools I use to build full-stack and AI-powered applications.
+        </motion.p>
+        <motion.div variants={fadeInUp} className="mt-8 space-y-3 sm:space-y-4">
+          <LogoLoop
+            logos={frontendLogos}
+            speed={40}
+            hoverSpeed={18}
+            direction="left"
+            gap={52}
+            fadeOut
+            fadeOutColor="hsl(222 47% 6%)"
+            ariaLabel="Frontend technologies"
+          />
+          <LogoLoop
+            logos={backendLogos}
+            speed={38}
+            hoverSpeed={17}
+            direction="right"
+            gap={48}
+            fadeOut
+            fadeOutColor="hsl(222 47% 6%)"
+            ariaLabel="Backend, data, AI, and developer tools"
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

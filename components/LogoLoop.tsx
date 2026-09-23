@@ -113,10 +113,10 @@ export function LogoLoop({
           onMouseLeave={() => setHovered(false)}
           onFocus={() => setHovered(true)}
           onBlur={() => setHovered(false)}
-          className="group/logo relative flex h-20 w-12 shrink-0 cursor-default items-start justify-center pt-2 text-[36px] text-accent outline-none transition-transform duration-200 hover:scale-110 focus-visible:scale-110"
+          className="group/logo relative flex h-24 w-12 shrink-0 cursor-default items-center justify-center text-[36px] text-accent outline-none transition-transform duration-200 hover:scale-110 focus-visible:scale-110"
         >
           {logo.node}
-          <span className="pointer-events-none absolute left-1/2 top-12 z-20 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-card px-2.5 py-1 text-xs font-medium text-foreground opacity-0 transition-opacity duration-150 group-hover/logo:opacity-100 group-focus-visible/logo:opacity-100">
+          <span className="pointer-events-none absolute left-1/2 top-[68px] z-20 -translate-x-1/2 whitespace-nowrap rounded-md border border-border/70 bg-card px-2.5 py-1 text-xs font-medium text-foreground opacity-0 transition-opacity duration-150 group-hover/logo:opacity-100 group-focus-visible/logo:opacity-100">
             {logo.title}
           </span>
         </span>
@@ -129,7 +129,7 @@ export function LogoLoop({
       ref={rootRef}
       role="group"
       aria-label={ariaLabel}
-      className="relative h-20 w-full min-w-0 overflow-hidden"
+      className="relative h-24 w-full min-w-0 overflow-hidden"
       onMouseLeave={() => setHovered(false)}
     >
       <div ref={trackRef} className="absolute left-0 top-0 flex w-max will-change-transform">
